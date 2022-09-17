@@ -39,11 +39,53 @@ namespace Seminar6HomeWork
             // Напишите программу, которая на вход принимает позиции элемента в двумерном массиве,
             // и возвращает значение этого элемента или же указывает, что такого элемента нет
             
+            // int [,] Create2dArray (int rows, int cols){
+            //     int [,] array = new int [rows, cols];
+            //         for (int i=0; i<rows; i++)
+            //             for (int j=0; j<cols; j++)
+            //                 array [i,j] =  new Random().Next(1,100);
+            //         return array;
+            // }
+
+            // void Show2dArray (int [,] array){
+            //     for (int i = 0; i<array.GetLength(0); i++){
+            //         Console.WriteLine();
+            //         for (int j = 0; j <array.GetLength(1); j++){
+            //             Console.Write (array[i,j] + "   ");
+            //         }
+            //     }
+            // }
+
+            // int SearchEl (int [,] array, int a, int b){
+            // int element = 0;
+            //     for (int i = 0; i<array.GetLength(0); i++){
+            //         Console.WriteLine();
+            //         for (int j = 0; j <array.GetLength(1); j++){
+            //             if (i==a-1 && j==b-1) element += array [i,j];
+            //         }
+            //     }
+            //     return element;
+            // }
+
+            // Console.WriteLine ( "Enter the element's position in row: ");
+            // int a = Convert.ToInt32 (Console.ReadLine());
+            // Console.WriteLine ( "Enter the element's position in col: ");
+            // int b = Convert.ToInt32 (Console.ReadLine());
+            
+            // int rows = 15;
+            // int cols = 10;
+            // int [,] array = Create2dArray (rows,cols);
+            // Show2dArray (array);
+            // int result = SearchEl (array, a, b);
+            // Console.WriteLine ("Искомый элемент:" +result );
+
+            //Задайте двумерный массив из целых чисел . Найдите среднее арифметическое элементов в каждом столбце
+
             int [,] Create2dArray (int rows, int cols){
                 int [,] array = new int [rows, cols];
                     for (int i=0; i<rows; i++)
                         for (int j=0; j<cols; j++)
-                            array [i,j] =  new Random().Next(1,100);
+                            array [i,j] =  new Random().Next(1,10);
                     return array;
             }
 
@@ -55,29 +97,34 @@ namespace Seminar6HomeWork
                     }
                 }
             }
-
-            int SearchEl (int [,] array, int a, int b){
-            int element = 0;
-                for (int i = 0; i<array.GetLength(0); i++){
-                    Console.WriteLine();
-                    for (int j = 0; j <array.GetLength(1); j++){
-                        if (i==a-1 && j==b-1) element += array [i,j];
+            
+            void Average (int [,] array){
+            int average = 0;
+            int sum=0;
+                for (int j =0; j<array.GetLength(1); j++){
+                    sum=0;
+                    for (int i = 0; i <array.GetLength(0); i++){
+                    sum += array[i,j];
                     }
+                average = sum/array.GetLength(0);
+                Console.WriteLine ($"Average of cols {j+1} is: {average}");
                 }
-                return element;
             }
 
-            Console.WriteLine ( "Enter the element's position in row: ");
-            int a = Convert.ToInt32 (Console.ReadLine());
-            Console.WriteLine ( "Enter the element's position in col: ");
-            int b = Convert.ToInt32 (Console.ReadLine());
             
-            int rows = 15;
-            int cols = 10;
+
+            Console.WriteLine ( "Enter the number of rows: ");
+            int rows = Convert.ToInt32 (Console.ReadLine());
+            
+            Console.WriteLine ( "Enter the number of cols: ");
+            int cols = Convert.ToInt32 (Console.ReadLine());
+            
             int [,] array = Create2dArray (rows,cols);
             Show2dArray (array);
-            int result = SearchEl (array, a, b);
-            Console.WriteLine ("Искомый элемент:" +result );
+            Console.WriteLine();
+            Average (array);
+            
+
 
 
         }
